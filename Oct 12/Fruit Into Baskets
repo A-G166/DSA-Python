@@ -5,6 +5,7 @@ if there are more than two fruit types, remove fruits from left.
 Keep track of the longest valid window.
 '''
 
+
 class Solution:
     def totalFruit(self, fruits):
         basket = {}
