@@ -1,0 +1,25 @@
+# Lonest Subarray with Sum K
+'''Whenever total == k, calculate the subarray length using j - i + 1'''
+'''complexity:- O(n^2) time, O(1) space'''
+
+class Solution:
+    def longestSubarray(self, arr, k):
+        maxlen = 0
+        n = len(arr)
+
+        for i in range(n):
+            total = 0
+
+            for j in range(i, n):
+                total += arr[j]
+
+                if total == k:
+                    maxlen = max(maxlen, j - i + 1)
+
+        return maxlen
+
+arr = [10, 5, 2, 7, 1, 9]
+k = 15
+
+obj = Solution()
+print(obj.longestSubarray(arr, k))
