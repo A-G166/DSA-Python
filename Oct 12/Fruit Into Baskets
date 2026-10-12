@@ -1,0 +1,28 @@
+# Fruit Into Baskets
+'''
+right expands the window to collect more fruits.
+Keep at most 2 different fruit types in the window.
+If there are more than 2 types, move left forward.
+Keep track of the largest window.'''
+'''complexity:- O(n) time, O(1) space'''
+
+fruits = [1, 2, 1, 2, 3]
+
+left = 0
+count = 0
+max_fruits = 0
+
+for right in range(len(fruits)):
+    if fruits[right] not in fruits[left:right]:
+        count += 1
+
+    while len(set(fruits[left:right + 1])) > 2:
+        left += 1
+        count = right - left + 1
+
+    count = right - left + 1
+
+    if count > max_fruits:
+        max_fruits = count
+
+print(max_fruits)
