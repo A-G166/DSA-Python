@@ -1,28 +1,28 @@
 # Fruit Into Baskets
 '''
-right expands the window to collect more fruits.
-Keep at most 2 different fruit types in the window.
-If there are more than 2 types, move left forward.
-Keep track of the largest window.'''
-'''complexity:- O(n) time, O(1) space'''
+Add fruits to the basket.
+if there are more than two fruit types, remove fruits from left.
+Keep track of the longest valid window.
+'''
 
-fruits = [1, 2, 1, 2, 3]
+class Solution:
+    def totalFruit(self, fruits):
+        basket = {}
+        left = 0
+        maxlen = 0
 
-left = 0
-count = 0
-max_fruits = 0
+        for right in range(len(fruits)):
+            basket[fruits[right]] = basket.get(fruits[right], 0) + 1
 
-for right in range(len(fruits)):
-    if fruits[right] not in fruits[left:right]:
-        count += 1
+            while len(basket) > 2:
+                basket[fruits[left]] -= 1
 
-    while len(set(fruits[left:right + 1])) > 2:
-        left += 1
-        count = right - left + 1
+                if basket[fruits[left]] == 0:
+                    del basket[fruits[left]]
 
-    count = right - left + 1
+                left += 1
 
-    if count > max_fruits:
-        max_fruits = count
+            maxlen = max(maxlen, right - left + 1)
 
-print(max_fruits)
+        return maxlen
+        return max_fruits
