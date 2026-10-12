@@ -1,0 +1,39 @@
+
+# Minimum Size Subarray Sum
+'''All numbers are positive, expanding the window increases the sum, shrinking it decreases the sum'''
+'''complexity:- O(n) time, O(1) space'''
+
+'''
+Add numbers using right until the sum reaches the target.
+
+Remove numbers from the left using left to find a shorter subarray.
+
+Save the smallest length found.'''
+
+target = 7
+nums = [2, 3, 1, 2, 4, 3]
+
+left = 0
+total = 0
+min_len = len(nums) + 1
+
+for right in range(len(nums)):
+    total += nums[right]
+
+    while total >= target:
+        length = right - left + 1
+
+        if length < min_len:
+            min_len = length
+
+        total -= nums[left]
+        left += 1
+
+if min_len == len(nums) + 1:
+    print(0)
+else:
+    print(min_len)
+
+
+
+print(max_fruits)
