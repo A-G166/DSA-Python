@@ -1,0 +1,24 @@
+'''
+right moves through each character.
+Check if current character already exists in current substring.
+If it does, move left to the position after the duplicate.
+Calculate substring length and update maxlen.
+'''
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        left = 0
+        maxlen = 0
+        
+        for right in range(len(s)):
+            for i in range(left,right):
+                if s[i]==s[right]:
+                    left=i+1
+                    break
+            length = right - left + 1
+
+            if length>maxlen:
+                maxlen=length
+
+        return maxlen
+        
