@@ -1,0 +1,31 @@
+'''
+Expand window using right.
+Count no. of times each character appears = freq.
+Find no. of characters to replace: window length - maxfreq.
+If replacements needed exceed k, move left forward.
+Keep track of the longest valid window.
+'''
+class Solution(object):
+    def characterReplacement(self, s, k):
+        left = 0
+        maxlen = 0
+        freq = {}
+        maxfreq = 0
+        
+        for right in range(len(s)):
+            ch = s[right]
+            freq[ch] = freq.get(ch,0) + 1
+            
+            if freq[ch]>maxfreq:
+                maxfreq = freq[ch]
+                
+            while (right-left+1)-maxfreq>k:
+                freq[s[left]]-=1
+                left+=1
+                
+            length = right-left+1
+        
+        if length>maxlen:
+            maxlen=length
+        
+        return maxlen
