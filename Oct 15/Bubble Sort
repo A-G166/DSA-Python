@@ -1,0 +1,14 @@
+'''
+compare two adjacent elements: arr[j] and arr[j + 1]
+If the first is bigger, swap 
+Repeat until the array is sorted.
+After each pass, the largest unsorted element moves to the end
+'''
+
+class Solution:
+    def bubbleSort(self,arr):
+        n = len(arr)
+        for i in range(n):
+            for j in range(n - 1 - i):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
