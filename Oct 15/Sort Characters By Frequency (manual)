@@ -1,0 +1,25 @@
+'''
+Count no. of times each character appears using a dictionary
+Find the character with the highest frequency
+Add that character to the result the required number of times
+Remove it from the dictionary and repeat until the dictionary is empty
+'''
+
+class Solution(object):
+    def frequencySort(self, s):
+        freq = {}
+        for ch in s:
+            freq[ch] = freq.get(ch,0) + 1
+        result = ""
+        while freq:
+            maxchar = ""
+            maxfreq = 0
+            for ch in freq:
+                if freq[ch]>maxfreq:
+                    maxfreq = freq[ch]
+                    maxchar = ch
+            result += maxchar*maxfreq
+            del freq[maxchar]
+        
+        return result
+
